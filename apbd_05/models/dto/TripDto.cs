@@ -15,17 +15,4 @@ public class TripDto
     public virtual ICollection<ClientDto> Clients { get; set; } = new List<ClientDto>();
 
     public virtual ICollection<CountryDto> Countries { get; set; } = new List<CountryDto>();
-
-    public static TripDto tripToTripDto(Trip trip)
-    {
-        var tripDto = new TripDto();
-        tripDto.Name = trip.Name;
-        tripDto.Description = trip.Description;
-        tripDto.DateFrom = trip.DateFrom;
-        tripDto.DateTo = trip.DateTo;
-        tripDto.MaxPeople = trip.MaxPeople;
-        //tripDto.Clients = trip.ClientTrips;
-        //tripDto.Countries = trip.IdCountries;
-        return tripDto;
-    }
 }
