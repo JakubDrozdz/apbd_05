@@ -3,12 +3,12 @@ using apbd_05.repository;
 
 namespace apbd_05.service;
 
-public class ClientTripService(IClientTripRepository _clientTripRepository, IClientService _clientService) : IClientTripService
+public class ClientTripService(IClientTripRepository clientTripRepository, IClientService clientService) : IClientTripService
 {
     public async Task<IEnumerable<ClientDto>> GetClientDtos(int tripId)
     {
-        var clientTripList = await _clientTripRepository.GetClientTripList(tripId);
-        var clients = await _clientService.GetClients(clientTripList);
+        var clientTripList = await clientTripRepository.GetClientTripList(tripId);
+        var clients = await clientService.GetClients(clientTripList);
         List<ClientDto> clientDtos = new List<ClientDto>();
         foreach (var client in clients)
         {
@@ -18,5 +18,11 @@ public class ClientTripService(IClientTripRepository _clientTripRepository, ICli
             clientDtos.Add(clientDto);
         }
         return clientDtos;
+    }
+
+    public async Task<int> GetNumberOfTripsForClient(int clientId)
+    {
+        var clientTrips = await clientTripRepository.GetClientTrips(clientId);
+        return clientTrips.Count();
     }
 }

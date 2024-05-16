@@ -10,6 +10,7 @@ public class TripController(ITripService _tripService) : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAllTrips()
     {
+        //TODO: badrequest codes?
         return Ok(await _tripService.GetAllTrips());
     }
 }

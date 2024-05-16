@@ -12,4 +12,9 @@ public class StandardClientTripRepository(ClientTripContext _clientTripContext) 
             .Where(x => x.IdTrip == tripId)
             .ToListAsync();
     }
+
+    public async Task<IEnumerable<ClientTrip>> GetClientTrips(int clientId)
+    {
+        return await _clientTripContext.ClientTrips().Where(x => x.IdClient == clientId).ToListAsync();
+    }
 }

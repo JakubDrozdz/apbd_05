@@ -10,4 +10,9 @@ public class StandardClientRepository(ClientContext _clientContext) : IClientRep
     {
         return await _clientContext.Clients().Where(x => clientsIds.Contains(x.IdClient)).ToListAsync();
     }
+
+    public async Task<int> DeleteClient(int clientId)
+    {
+        return await _clientContext.Clients().Where(x => x.IdClient == clientId).ExecuteDeleteAsync();
+    }
 }
