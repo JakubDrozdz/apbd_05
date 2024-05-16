@@ -1,6 +1,7 @@
 using apbd_05.context;
 using apbd_05.repository;
 using apbd_05.service;
+using apbd_05.service.country;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,7 @@ builder.Services.AddScoped<IClientTripService, ClientTripService>();
 builder.Services.AddScoped<IClientTripRepository, StandardClientTripRepository>();
 builder.Services.AddScoped<ClientTripContext, ClientTripContext>();
 builder.Services.AddScoped<ClientContext, ClientContext>();
+builder.Services.AddScoped<ICountryService, CountryService>();
 
 var app = builder.Build();
 
