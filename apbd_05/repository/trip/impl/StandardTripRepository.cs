@@ -6,12 +6,12 @@ namespace apbd_05.repository;
 
 public class StandardTripRepository(TripContext _tripContext) : ITripRepository
 {
-    public async Task<IEnumerable<Trip>> GetAllTrips()
+    public async Task<IEnumerable<Trip>> GetAllTripsOrderByFromDateDesc()
     {
-        var trips = await _tripContext.Trips()
+        return await _tripContext.Trips()
             .Include(np=>np.ClientTrips)
             .Include(np => np.IdCountries)
+            .OrderByDescending(x => x.DateFrom)
             .ToListAsync();
-        return trips;
     }
 }

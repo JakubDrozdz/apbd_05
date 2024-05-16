@@ -7,7 +7,7 @@ public class TripService(ITripRepository _tripRepository, IClientTripService _cl
 {
     public async Task<IEnumerable<TripDto>> GetAllTrips()
     {
-        var allTrips = await _tripRepository.GetAllTrips();
+        var allTrips = await _tripRepository.GetAllTripsOrderByFromDateDesc();
         List<TripDto> tripsDtos = new List<TripDto>();
         foreach (var trip in allTrips)
         {

@@ -5,5 +5,5 @@ namespace apbd_05.repository;
 
 public interface ITripRepository
 {
-    Task<IEnumerable<Trip>> GetAllTrips();
+    Task<IEnumerable<Trip>> GetAllTripsOrderByFromDateDesc();
 }
