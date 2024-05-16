@@ -8,4 +8,6 @@ public interface IClientTripService
     Task<IEnumerable<ClientDto>> GetClientDtos(int tripId);
 
     Task<int> GetNumberOfTripsForClient(int clientId);
+
+    Task<int> AddClientToTrip(ClientTripDto clientTripDto);
 }

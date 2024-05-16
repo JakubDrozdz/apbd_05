@@ -25,4 +25,9 @@ public class ClientTripService(IClientTripRepository clientTripRepository, IClie
         var clientTrips = await clientTripRepository.GetClientTrips(clientId);
         return clientTrips.Count();
     }
+
+    public async Task<int> AddClientToTrip(ClientTripDto clientTripDto)
+    {
+        return 0;
+    }
 }
