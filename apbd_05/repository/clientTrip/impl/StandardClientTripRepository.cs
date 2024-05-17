@@ -17,4 +17,11 @@ public class StandardClientTripRepository(ClientTripContext _clientTripContext) 
     {
         return await _clientTripContext.ClientTrips().Where(x => x.IdClient == clientId).ToListAsync();
     }
+
+    public async Task<ClientTrip> RegisterClientToTrip(ClientTrip clientTrip)
+    {
+        ClientTrip persistedClientTrip = (await _clientTripContext.ClientTrips().AddAsync(clientTrip)).Entity;
+        await _clientTripContext.GetDbContext().SaveChangesAsync();
+        return persistedClientTrip;
+    }
 }

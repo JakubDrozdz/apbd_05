@@ -17,6 +17,11 @@ public class TripService(ITripRepository tripRepository, IClientService clientSe
         return tripsDtos;
     }
 
+    public async Task<Trip> GetTrip(int tripId, string tripName)
+    {
+        return await tripRepository.GetTrip(tripId, tripName);
+    }
+
     private async Task<TripDto> PrepareTripDto(Trip trip)
     {
         TripDto tripDto = new TripDto();

@@ -19,7 +19,7 @@ public class StandardClientRepository(ClientContext _clientContext) : IClientRep
 
     public async Task<Client> FindWithPesel(string pesel)
     {
-        return await _clientContext.Clients().Where(x => x.Pesel == pesel).FirstOrDefaultAsync();
+        return await _clientContext.Clients().Include(np=>np.ClientTrips).Where(x => x.Pesel == pesel).FirstOrDefaultAsync();
     }
 
     public async Task<Client> AddClient(Client client)

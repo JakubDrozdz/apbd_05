@@ -51,7 +51,6 @@ public class ClientService(IClientRepository clientRepository) : IClientService
         Client clientInDb = await clientRepository.FindWithPesel(client.Pesel);
         if (clientInDb != null)
         {
-            //throw new ClientAlreadyExistException("Client with PESEL " + client.Pesel + " already exists");
             return clientInDb;
         }
 

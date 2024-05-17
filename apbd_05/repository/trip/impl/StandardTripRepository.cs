@@ -14,4 +14,9 @@ public class StandardTripRepository(TripContext _tripContext) : ITripRepository
             .OrderByDescending(x => x.DateFrom)
             .ToListAsync();
     }
+
+    public async Task<Trip> GetTrip(int tripId, string tripName)
+    {
+        return await _tripContext.Trips().Where(x => x.IdTrip == tripId && x.Name == tripName).FirstOrDefaultAsync();
+    }
 }

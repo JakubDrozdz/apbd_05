@@ -9,5 +9,7 @@ public interface IClientTripService
 
     Task<int> GetNumberOfTripsForClient(int clientId);
 
-    Task<int> AddClientToTrip(ClientTripDto clientTripDto);
+    Task<int> AddClientToTrip(Client client, ClientTripDto clientTripDto);
+
+    void ClientTripDtoIsNotValid(ClientTripDto clientTripDto);
 }
