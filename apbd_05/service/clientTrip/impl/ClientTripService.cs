@@ -52,7 +52,7 @@ public class ClientTripService(IClientTripRepository clientTripRepository, IClie
     public void ClientTripDtoIsNotValid(ClientTripDto clientTripDto)
     {
         var peselRegex = new Regex("^[0-9]{11}$");
-        var phoneNumberRegex = new Regex("^.+{0,1}[0-9]{9,15}$");
+        var phoneNumberRegex = new Regex("^\\+{0,1}[0-9]{9,15}$");
         var emailRegex = new Regex("^\\w{1,}@\\w{1,}\\.\\w{2,}$");
         if (!peselRegex.IsMatch(clientTripDto.Pesel) 
             || !phoneNumberRegex.IsMatch(clientTripDto.Telephone)
