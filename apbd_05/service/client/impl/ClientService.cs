@@ -13,6 +13,25 @@ public class ClientService(IClientRepository clientRepository) : IClientService
         var clientsIds = clientTripList.Select(x => x.IdClient).ToList();
         return await clientRepository.GetClients(clientsIds);
     }
+    
+    public async Task<IEnumerable<ClientDto>> GetClientDtos(IEnumerable<ClientTrip> clientTrips)
+    {
+        var clientTripList = new List<int>();
+        foreach (var clientTrip in clientTrips)
+        {
+            clientTripList.Add(clientTrip.IdClient);
+        }
+        var clients = await clientRepository.GetClients(clientTripList);
+        List<ClientDto> clientDtos = new List<ClientDto>();
+        foreach (var client in clients)
+        {
+            var clientDto = new ClientDto();
+            clientDto.FirstName = client.FirstName;
+            clientDto.LastName = client.LastName;
+            clientDtos.Add(clientDto);
+        }
+        return clientDtos;
+    }
 
     public async Task<int> DeleteClient(int clientId)
     {

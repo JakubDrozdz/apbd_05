@@ -13,7 +13,7 @@ public class ClientTripController(IClientTripService clientTripService, IClientS
     public async Task<IActionResult> AddClientToTrip(ClientTripDto clientTripDto)
     {
         Client client = await clientService.AddClient(clientTripDto);
-        //await clientTripService.AddClientToTrip(clientTripDto);
+        await clientTripService.AddClientToTrip(clientTripDto);
         return Ok(client);
     }
 }

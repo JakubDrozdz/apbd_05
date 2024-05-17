@@ -3,7 +3,7 @@ using apbd_05.repository;
 
 namespace apbd_05.service;
 
-public class ClientTripService(IClientTripRepository clientTripRepository, IClientService clientService) : IClientTripService
+public class ClientTripService(IClientTripRepository clientTripRepository, IClientService clientService, ITripService tripService) : IClientTripService
 {
     public async Task<IEnumerable<ClientDto>> GetClientDtos(int tripId)
     {

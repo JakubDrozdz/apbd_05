@@ -6,6 +6,7 @@ namespace apbd_05.service;
 public interface IClientService
 {
     Task<IEnumerable<Client>> GetClients(IEnumerable<ClientTrip> clientTripList);
+    Task<IEnumerable<ClientDto>> GetClientDtos(IEnumerable<ClientTrip> clientTrips);
 
     Task<int> DeleteClient(int clientId);
 

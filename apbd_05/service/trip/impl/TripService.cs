@@ -4,7 +4,7 @@ using apbd_05.service.country;
 
 namespace apbd_05.service;
 
-public class TripService(ITripRepository tripRepository, IClientTripService clientTripService, ICountryService countryService) : ITripService
+public class TripService(ITripRepository tripRepository, IClientService clientService, ICountryService countryService) : ITripService
 {
     public async Task<IEnumerable<TripDto>> GetAllTrips()
     {
@@ -25,7 +25,7 @@ public class TripService(ITripRepository tripRepository, IClientTripService clie
         tripDto.DateFrom = trip.DateFrom;
         tripDto.DateTo = trip.DateTo;
         tripDto.MaxPeople = trip.MaxPeople;
-        foreach (var clientDto in await clientTripService.GetClientDtos(trip.IdTrip))
+        foreach (var clientDto in await clientService.GetClientDtos(trip.ClientTrips))
         {
             tripDto.Clients.Add(clientDto);
         }
